@@ -23,7 +23,8 @@
     ],
     "implicit-arrow-linebreak": "off",
     "function-paren-newline": "off",
-    "class-methods-use-this": "off"
+    "class-methods-use-this": "off",
+    "no-unused-vars": "off"
   },
   "settings": {
     "import/resolver": {

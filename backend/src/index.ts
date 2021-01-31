@@ -1,9 +1,18 @@
 import express from 'express';
+import cors from 'cors';
+import morgan from 'morgan';
+import dotenv from 'dotenv';
+import router from './routes/index';
 
 const app = express();
 
-app.get('/', (req, res) => res.json({ message: 'hello world ' }));
+app.use(router);
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.json({ type: 'application/vnd.api+json' }));
+app.use(cors());
+app.use(morgan('dev'));
 
-console.log('backend');
+dotenv.config();
 
-app.listen(3001);
+app.listen(process.env.SERVER_PORT || 3001);

@@ -3,13 +3,16 @@ import { ThemeProvider } from 'styled-components';
 
 import { GlobalStyles, theme } from './assets/styles';
 import Routes from './routes/routes';
+import { MovieProvider } from './shared/hooks/useMovie';
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <ToastContainer />
       <GlobalStyles />
-      <Routes />
+      <MovieProvider>
+        <Routes />
+      </MovieProvider>
     </ThemeProvider>
   );
 }

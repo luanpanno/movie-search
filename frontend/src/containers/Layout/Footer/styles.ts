@@ -5,5 +5,7 @@ export const Container = styled.footer`
   align-items: center;
   justify-content: center;
   height: 50px;
-  background-color: #333;
+  background-color: ${(props) => props.theme.colors.greyDark};
+  color: white;
+  padding: 0 100px;
 `;

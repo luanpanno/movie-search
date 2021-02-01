@@ -1,5 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 import 'react-toastify/dist/ReactToastify.css';
+import 'react-toggle/style.css'; // for ES6 modules
 
 import { Reset } from './Reset';
 

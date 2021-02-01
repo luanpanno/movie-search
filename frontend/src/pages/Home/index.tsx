@@ -1,17 +1,13 @@
 import { useEffect } from 'react';
 
-// import useMovie from '../../shared/hooks/useMovie';
+import useMovie from '../../shared/hooks/useMovie';
 
 const Home = () => {
-  // const { listMovies, movies } = useMovie();
+  const { listMovies } = useMovie();
 
-  // useEffect(() => {
-  //   listMovies('spider');
-  // }, [listMovies]);
-
-  // useEffect(() => {
-  //   console.log(movies);
-  // }, [movies]);
+  useEffect(() => {
+    listMovies('spider');
+  }, [listMovies]);
 
   return <h1>home</h1>;
 };

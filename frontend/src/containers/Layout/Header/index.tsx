@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import Toggle from 'react-toggle';
 
-import Input from '../../../components/Input';
+import SearchInput from '../../../components/SearchInput';
 import { Container } from './styles';
 
 const Header = () => {
@@ -11,7 +11,7 @@ const Header = () => {
         Movie <br /> Search
       </Link>
       <div className="input">
-        <Input />
+        <SearchInput placeholder="ex: Spider-Man" />
       </div>
       <Toggle />
     </Container>

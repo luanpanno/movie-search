@@ -12,7 +12,6 @@ export const Container = styled.header`
     text-decoration: none;
     color: white;
     font-size: 1.8rem;
-    /* background-color: ${(props) => props.theme.colors.primary}; */
     width: 150px;
     display: inline-block;
     text-align: center;

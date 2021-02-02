@@ -41,6 +41,12 @@ const SearchInput: React.FC<Props> = ({
     setHasFocus(false);
   };
 
+  function handleKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
+    if (e.key === 'Enter') {
+      onClick();
+    }
+  }
+
   return (
     <Container
       hasError={hasError ?? false}
@@ -61,6 +67,7 @@ const SearchInput: React.FC<Props> = ({
           checked={checked}
           defaultChecked={defaultChecked}
           placeholder={placeholder}
+          onKeyDown={handleKeyDown}
         />
         <button type="button" className="search-icon" onClick={onClick}>
           <RiSearch2Line />

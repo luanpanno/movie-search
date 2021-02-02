@@ -7,6 +7,7 @@ import { movieService } from '../services';
 interface Context {
   movies: IMovieResponse;
   movie: IMovieDetail;
+  filters: IMoviesFilter;
   listMovies: (title: string) => void;
   getMovie: (imdbID: string) => void;
   setMovie: (value: IMovieDetail) => void;
@@ -23,6 +24,8 @@ export const MovieProvider: React.FC = ({ children }) => {
   });
 
   const listMovies = useCallback(async () => {
+    if (!filters.title) return;
+
     try {
       const response = await movieService.listMovies(filters);
 
@@ -44,7 +47,15 @@ export const MovieProvider: React.FC = ({ children }) => {
 
   return (
     <MovieContext.Provider
-      value={{ movies, movie, setMovie, listMovies, getMovie, setFilters }}
+      value={{
+        movies,
+        movie,
+        filters,
+        setMovie,
+        listMovies,
+        getMovie,
+        setFilters,
+      }}
     >
       {children}
     </MovieContext.Provider>

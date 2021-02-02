@@ -12,4 +12,5 @@ export const Container = styled.div`
 export const Main = styled.main`
   background-color: ${(props) => props.theme.colors.background};
   padding: 0 100px;
+  padding: 25px 100px;
 `;

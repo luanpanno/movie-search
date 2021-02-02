@@ -1,7 +1,7 @@
 import { createContext, useCallback, useContext, useState } from 'react';
 import { toast } from 'react-toastify';
 
-import { IMovieDetail, IMovieResponse } from '../models/IMovie';
+import { IMovieDetail, IMovieResponse, IMoviesFilter } from '../models/IMovie';
 import { movieService } from '../services';
 
 interface Context {
@@ -10,6 +10,7 @@ interface Context {
   listMovies: (title: string) => void;
   getMovie: (imdbID: string) => void;
   setMovie: (value: IMovieDetail) => void;
+  setFilters: (value: IMoviesFilter) => void;
 }
 
 export const MovieContext = createContext<Context>({} as Context);
@@ -17,16 +18,19 @@ export const MovieContext = createContext<Context>({} as Context);
 export const MovieProvider: React.FC = ({ children }) => {
   const [movies, setMovies] = useState<IMovieResponse>();
   const [movie, setMovie] = useState<IMovieDetail>();
+  const [filters, setFilters] = useState({
+    title: '',
+  });
 
-  const listMovies = useCallback(async (title: string) => {
+  const listMovies = useCallback(async () => {
     try {
-      const response = await movieService.listMovies(title);
+      const response = await movieService.listMovies(filters);
 
       setMovies(response);
     } catch (error) {
       toast.error(error.message);
     }
-  }, []);
+  }, [filters]);
 
   const getMovie = useCallback(async (imdbID: string) => {
     try {
@@ -40,7 +44,7 @@ export const MovieProvider: React.FC = ({ children }) => {
 
   return (
     <MovieContext.Provider
-      value={{ movies, movie, setMovie, listMovies, getMovie }}
+      value={{ movies, movie, setMovie, listMovies, getMovie, setFilters }}
     >
       {children}
     </MovieContext.Provider>

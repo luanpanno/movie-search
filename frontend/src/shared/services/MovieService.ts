@@ -1,6 +1,6 @@
 import { AxiosInstance } from 'axios';
 
-import { IMovieDetail, IMovieResponse } from '../models/IMovie';
+import { IMovieDetail, IMovieResponse, IMoviesFilter } from '../models/IMovie';
 import { IMovieService } from './interfaces/IMovieService';
 
 class MovieService implements IMovieService {
@@ -8,10 +8,8 @@ class MovieService implements IMovieService {
 
   private ENDPOINT = '/api/v1/movies';
 
-  async listMovies(title: string) {
-    const params = {
-      title,
-    };
+  async listMovies(filters: IMoviesFilter) {
+    const params = filters;
 
     const { data } = await this.api.get<IMovieResponse>(`${this.ENDPOINT}`, {
       params,

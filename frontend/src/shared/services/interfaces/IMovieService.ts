@@ -1,6 +1,10 @@
-import { IMovieDetail, IMovieResponse } from '../../models/IMovie';
+import {
+  IMovieDetail,
+  IMovieResponse,
+  IMoviesFilter,
+} from '../../models/IMovie';
 
 export interface IMovieService {
-  listMovies: (query: string) => Promise<IMovieResponse>;
+  listMovies: (filters: IMoviesFilter) => Promise<IMovieResponse>;
   getMovie: (imdbID: string) => Promise<IMovieDetail>;
 }

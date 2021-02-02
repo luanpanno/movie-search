@@ -44,3 +44,7 @@ export interface IMovieResponse {
   totalResults: number;
   Response: boolean;
 }
+
+export interface IMoviesFilter {
+  title: string;
+}

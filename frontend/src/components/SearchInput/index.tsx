@@ -14,6 +14,7 @@ interface Props {
   hasError?: boolean;
   errorText?: string;
   placeholder?: string;
+  onClick?(): void;
   onChange?(e: React.ChangeEvent<unknown>): void;
   onBlur?(e: React.FocusEvent<unknown>): void;
 }
@@ -30,6 +31,7 @@ const SearchInput: React.FC<Props> = ({
   hasError,
   errorText,
   placeholder,
+  onClick,
 }) => {
   const [hasFocus, setHasFocus] = useState(false);
 
@@ -60,7 +62,7 @@ const SearchInput: React.FC<Props> = ({
           defaultChecked={defaultChecked}
           placeholder={placeholder}
         />
-        <button type="button" className="search-icon">
+        <button type="button" className="search-icon" onClick={onClick}>
           <RiSearch2Line />
         </button>
       </InputWrapper>

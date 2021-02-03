@@ -131,6 +131,15 @@ export const Reset = css`
     border-spacing: 0;
   }
 
+  button {
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+  }
+
   @page {
     size: auto; /* auto is the initial value */
     margin: 0; /* this affects the margin in the printer settings */

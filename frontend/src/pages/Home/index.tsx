@@ -1,11 +1,13 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import Card from '../../components/Card';
 import useMovie from '../../shared/hooks/useMovie';
+import Detail from './components/Detail';
 import { Container } from './styles';
 
 const Home = () => {
   const { listMovies, movies, filters } = useMovie();
+  const [openDetail, setOpenDetail] = useState(false);
 
   useEffect(() => {
     listMovies('spider');
@@ -18,9 +20,16 @@ const Home = () => {
       </header>
       <main>
         {movies?.Search?.map((item) => {
-          return <Card key={item.imdbID} movie={item} />;
+          return (
+            <Card
+              key={item.imdbID}
+              movie={item}
+              onClick={() => setOpenDetail(true)}
+            />
+          );
         })}
       </main>
+      {openDetail && <Detail setOpenDetail={setOpenDetail} />}
     </Container>
   );
 };

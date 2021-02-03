@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { RiCloseLine } from 'react-icons/ri';
 
 import { Container, Content } from './styles';
@@ -11,6 +12,14 @@ const Modal: React.FC<Props> = ({ title, setClose, children }) => {
   function handleCloseModal() {
     setClose(false);
   }
+
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  });
 
   return (
     <Container>

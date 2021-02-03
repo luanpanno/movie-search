@@ -1,14 +1,36 @@
-import Modal from '../../../../containers/Modal';
+import { useEffect } from 'react';
+import { RiCloseLine } from 'react-icons/ri';
+
+import { Container, Content } from './styles';
 
 interface Props {
-  setOpenDetail: (state: boolean) => void;
+  setClose: (state: boolean) => void;
 }
 
-const Detail: React.FC<Props> = ({ setOpenDetail }) => {
+const Detail: React.FC<Props> = ({ setClose, children }) => {
+  function handleCloseModal() {
+    setClose(false);
+  }
+
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  });
+
   return (
-    <Modal title="Spider-Man" setClose={setOpenDetail}>
-      teste
-    </Modal>
+    <Container>
+      <Content>
+        <header>
+          <button type="button" title="Close Modal" onClick={handleCloseModal}>
+            <RiCloseLine />
+          </button>
+        </header>
+        <main>{children}</main>
+      </Content>
+    </Container>
   );
 };
 

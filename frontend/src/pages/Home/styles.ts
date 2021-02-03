@@ -5,7 +5,7 @@ export const Container = styled.div`
   border-radius: 5px;
   padding: 25px;
 
-  header {
+  & > header {
     h2 {
       font-size: 1.5rem;
       font-weight: 600;

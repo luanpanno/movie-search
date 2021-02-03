@@ -29,7 +29,7 @@ const Home = () => {
           );
         })}
       </main>
-      {openDetail && <Detail setOpenDetail={setOpenDetail} />}
+      {openDetail && <Detail setClose={setOpenDetail} />}
     </Container>
   );
 };

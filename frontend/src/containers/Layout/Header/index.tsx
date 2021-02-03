@@ -4,9 +4,11 @@ import Toggle from 'react-toggle';
 
 import SearchInput from '../../../components/SearchInput';
 import useMovie from '../../../shared/hooks/useMovie';
+import useTheme from '../../../shared/hooks/useTheme';
 import { Container } from './styles';
 
 const Header = () => {
+  const { setTheme } = useTheme();
   const { setFilters } = useMovie();
 
   const [filter, setFilter] = useState('');
@@ -15,6 +17,10 @@ const Header = () => {
     setFilters({
       title: filter,
     });
+  }
+
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setTheme(e.target.checked ? 'dark' : 'light');
   }
 
   return (
@@ -31,7 +37,7 @@ const Header = () => {
           onClick={handleClick}
         />
       </div>
-      <Toggle />
+      <Toggle onChange={handleChange} />
     </Container>
   );
 };

@@ -15,7 +15,7 @@ export const darkMode = {
     secondary: '#212529',
     grey: '#adb5bd',
     greyDark: '#343a40',
-    background: 'black',
+    background: '#333',
     red: '#D9534F',
   },
 };

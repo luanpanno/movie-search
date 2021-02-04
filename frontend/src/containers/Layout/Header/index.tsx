@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { RiMoonLine, RiSunLine } from 'react-icons/ri';
 import { Link } from 'react-router-dom';
 import Toggle from 'react-toggle';
 
@@ -37,7 +38,13 @@ const Header = () => {
           onClick={handleClick}
         />
       </div>
-      <Toggle onChange={handleChange} />
+      <Toggle
+        onChange={handleChange}
+        icons={{
+          checked: <RiMoonLine />,
+          unchecked: <RiSunLine />,
+        }}
+      />
     </Container>
   );
 };
